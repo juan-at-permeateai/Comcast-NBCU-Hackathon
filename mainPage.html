@@ -97,7 +97,7 @@ body {
           </div>
 
        </div> <!--1st-->
-        <div id="second" style="background-color: Aqua;margin-top: 5px;margin-bottom: 5px;">
+        <div id="second" style="display: none;background-color: Aqua;margin-top: 5px;margin-bottom: 5px;">
         
           <div id="live2" align="center" class="embed-responsive embed-responsive-16by9">
           <video id="v_sub" autoplay loop class="embed-responsive-item">
@@ -115,7 +115,7 @@ body {
             </div>
           </div>
             </div> <!--2nd-->
-          <div id="third" style="background-color: yellow;">  
+          <div id="third" style="display: none;background-color: yellow;">  
             <div id="live3" align="center" class="embed-responsive embed-responsive-16by9">
             <video id="v_sub" autoplay loop class="embed-responsive-item">
              <!--source src="http://techslides.com/demos/sample-videos/small.mp4" type=video/mp4-->
@@ -162,6 +162,15 @@ window.onload = function() {
     // calls drawVideo() function, passing all the objects
 
 }
+function showIt() {
+  document.getElementById("second").style.display = "block";
+}
+setTimeout("showIt()", 10000); // after 1 sec
+
+function showIt2() {
+  document.getElementById("third").style.display = "block";
+}
+setTimeout("showIt2()", 20000); // after 5 secs
 
   function fbProfile() {
     var x = document.getElementById("fb-profile");
