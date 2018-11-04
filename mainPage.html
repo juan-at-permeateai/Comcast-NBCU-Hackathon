@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TeleportMe</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    
+    .wrapper-with-intrinsic-ratio {
+  position: relative;
+  padding-bottom: 20%;
+  height: 0;
+}
+.element-to-stretch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: teal; 
+}
+#container {
+  position: relative;
+}
+#container canvas, #overlay {
+  position: absolute;
+}
+canvas {
+  border: 1px solid black;
+}
+body {
+    background: black;
+}
+
+#c {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#v {
+    position: absolute;
+    /*top: 50%;
+    left: 50%;
+    margin: -180px 0 0 -240px;*/
+}
+  </style>
+</head>
+<body>
+
+
+<div class="container-fluid">
+ 
+  <div class="row">
+      <h2 style="text-align:center;"><span style="padding-left: 25px;float: left;"><img style="width:35px;height:45px;" src="TelMeSm.png" alt="TeleportMe-logo"/></span><span>TeleportMe - An Interactive Video Simulation</span></h2>
+      <hr>
+      <!--h5><span class="label label-danger">watch</span> <span class="label label-primary">like</span></h5><br-->
+  </div>
+  
+    <div id="container">
+      <div align="center" class="embed-responsive embed-responsive-16by9">
+        <video id="v" autoplay loop class="embed-responsive-item">
+         <source src="http://techslides.com/demos/sample-videos/small.mp4" type=video/mp4>
+        </video>
+      </div>
+
+
+      <canvas id="c" style="width: 100%;height: 100%;"></canvas>
+      <div style="background:brown;top: 70px;right: 10px;padding-right:10px;" id="overlay">
+        <div align="center" class="embed-responsive embed-responsive-16by9">
+          <video id="v_sub" autoplay loop class="embed-responsive-item">
+           <!--source src="http://techslides.com/demos/sample-videos/small.mp4" type=video/mp4-->
+           <source src="http://96.71.39.58/live/pablo.m3u8" type=application/x-mpegURL>
+          </video>
+          <button id="prof" onclick="fbProfile();" class="btn btn-primary" style="position:absolute;position: absolute;bottom: 0px;right: 0;">fb profile</button>
+        </div>
+        <div id="fb-profile">
+          <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F20531316728%2Fposts%2F10154009990506729%2F&width=350&show_text=false&height=326&appId" width="350" height="326" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+          
+        </div>
+      </div>
+      
+
+    </div>
+
+      <!--div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F20531316728%2Fposts%2F10154009990506729%2F&width=200&show_text=true&height=290&appId" width="200" height="250"></iframe>
+</div-->
+  
+</div> <!--fluid end-->
+
+
+<footer class="container-fluid">
+  <p style="text-align: center;">Team High Beam Presents the TeleportMe App at Comcast NBC Universal Hackathon! </p>
+</footer>
+<script>
+
+window.onload = function() {
+ // document.getElementById("fb-profile").style.display = "none";
+  
+    var canvas = document.getElementById("c");
+    var context = canvas.getContext("2d");
+    // grab the video element
+    var video = document.getElementById("v");
+    
+    drawVideo(context, video, canvas.width, canvas.height);
+    // calls drawVideo() function, passing all the objects
+}
+
+  function fbProfile() {
+    var x = document.getElementById("fb-profile");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+  }
+
+function drawVideo(context, video, width, height) {         
+context.drawImage(video, 0, 0, width, height); // draws current video frame to canvas     
+var delay = 100; // milliseconds delay for slowing framerate
+setTimeout(drawVideo, delay, context, video, width, height); // recursively calls drawVideo() again after delay
+}
+</script>
+
+</script>
+
+</body>
+</html>
